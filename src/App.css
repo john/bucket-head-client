@@ -1,0 +1,40 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #222;
+  height: 100px;
+  padding: 20px;
+  color: white;
+}
+
+.App-header img {
+  width: 60px;
+  padding: 0 20px 0 0;
+}
+
+.App-header h2 {
+  margin: 10px 0 0 0;
+  padding: 0px;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+.videos {
+  padding-top: 25px;
+}
+.videos li {
+  padding: 5px;
+}
+
+.video button {
+  margin-left: 10px;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
