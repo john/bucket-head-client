@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Vote from './Vote';
 
 export default class Video extends Component {
@@ -30,6 +30,7 @@ export default class Video extends Component {
         this.setState({video_id: videos[0]['videoId']['S']});
         this.setState({video_path: videos[0]['480p_transcoded']['S']});
         this.setState({video_duration: videos[0]['duration']['S']});
+		this.setState({video_thumbnail: videos[0]['thumbnail']['S']});
         this.setState({video_url: "https://s3-us-west-2.amazonaws.com/bhead-transcoded/" + videos[0]['480p_transcoded']['S']});
       }.bind(this)).catch(function(ex) {
         console.log('parsing failed', ex)
@@ -41,15 +42,22 @@ export default class Video extends Component {
 
     return (
       <div className="videos">
+		<div>
+		  <Link to="/">
+		    &larr; Back to videos
+		  </Link>
+		</div>
         <div>
-          ID: {this.state.video_id}
+          <a href={this.state.video_url}>
+		    <img src={"https://s3-us-west-2.amazonaws.com/bhead-transcoded/" + this.state.video_thumbnail + '.png'} alt={this.state.video_url} />
+          </a>
         </div>
         <div>
           Duration: {this.state.video_duration}
         </div>
-        <div>
-          <a href={this.state.video_url}>{this.state.video_path}</a>
-        </div>
+		<div>
+		  <Vote />
+		</div>
       </div>
     )
   }

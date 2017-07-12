@@ -1,29 +1,12 @@
 .App {
-  text-align: center;
+  margin-top: 15px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 100px;
-  padding: 20px;
-  color: white;
+.App .navbar-brand {
+  font-weight: bold;
 }
 
-.App-header img {
-  width: 60px;
-  padding: 0 20px 0 0;
-}
-
-.App-header h2 {
-  margin: 10px 0 0 0;
-  padding: 0px;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-.videos {
+/*.videos {
   padding-top: 25px;
 }
 .videos li {
@@ -32,9 +15,4 @@
 
 .video button {
   margin-left: 10px;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+}*/

@@ -4,9 +4,15 @@ export default class Videos extends Component {
 
   render() {
     return (
-      <button className='btn'>
-        Vote
-      </button>
+	  <div>
+        <button className='btn'>
+          Looks fine to me.
+        </button>
+		&nbsp;
+	    <button className='btn'>
+		  Are you kidding!?
+	    </button>
+	  </div>
     );
   }
 }
