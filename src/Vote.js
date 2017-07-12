@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Videos extends Component {
+class Vote extends Component {
 
   render() {
     return (
@@ -16,3 +16,5 @@ export default class Videos extends Component {
     );
   }
 }
+
+export default Vote;

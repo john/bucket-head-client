@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "amazon-cognito-identity-js": "^1.19.0",
     "bootstrap": "^4.0.0-alpha.6",
     "promise-polyfill": "6.0.2",
     "react": "^15.6.1",

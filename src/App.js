@@ -7,7 +7,7 @@ import RouteNavItem from './components/RouteNavItem';
 import { Nav, Navbar } from 'react-bootstrap';
 import './App.css';
 
-import Login from './Login';
+import Login from './containers/Login';
 import Home from './containers/Home';
 
 class App extends Component {
@@ -16,7 +16,7 @@ class App extends Component {
     event.preventDefault();
     this.props.history.push(event.currentTarget.getAttribute('href'));
   }
-  
+
   render() {
     return (
       <div className="App container">

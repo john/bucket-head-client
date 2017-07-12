@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import Vote from './Vote';
 
-export default class Video extends Component {
+class Video extends Component {
 
   constructor(props) {
     super(props);
@@ -43,7 +43,7 @@ export default class Video extends Component {
     return (
       <div className="videos">
 		<div>
-		  <Link to="/">
+		  <Link to="/videos">
 		    &larr; Back to videos
 		  </Link>
 		</div>
@@ -62,3 +62,5 @@ export default class Video extends Component {
     )
   }
 }
+
+export default Video;
