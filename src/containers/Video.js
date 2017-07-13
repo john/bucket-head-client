@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import Vote from './Vote';
+import Vote from '../components/Vote';
 
 class Video extends Component {
 

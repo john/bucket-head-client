@@ -1,18 +1,25 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-
+import {
+  Switch,
+  Route } from 'react-router-dom';
 import Home from './containers/Home';
-import NotFound from './containers/NotFound';
 import Login from './containers/Login';
-import Videos from './Videos';
-import Video from './Video';
+import Signup from './containers/Signup';
+import Videos from './containers/Videos';
+import Video from './containers/Video';
+import NotFound from './containers/NotFound';
+import AppliedRoute from './components/AppliedRoute'
 
-export default () => (
+
+export default ({ childProps }) => (
   <Switch>
-	  <Route path="/login" exact component={Login} />
-    <Route exact path="/" component={Home} />
+    <AppliedRoute path="/" exact component={Home} props={childProps} />
+    <AppliedRoute path="/login" exact component={Login} props={childProps} />
+    <AppliedRoute path="/signup" exact component={Signup} props={childProps} />
+  
     <Route exact path="/videos" component={Videos} />
     <Route path="/video/:videoId" component={Video} />}/>
+  
     <Route component={NotFound} />
   </Switch>
 );
