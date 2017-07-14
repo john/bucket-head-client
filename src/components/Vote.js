@@ -14,41 +14,50 @@ class Vote extends Component {
     this.handleVote = this.handleVote.bind(this);
   }
 
-  async componentDidMount() {
-    // get vote from API, update state
-    // const currentUser = this.getCurrentUser();
-  }
-
-  handleVote = (vote) => {
-    const userPool = new CognitoUserPool({
-      UserPoolId: config.cognito.USER_POOL_ID,
-      ClientId: config.cognito.APP_CLIENT_ID
-    });
-    var cognitoUser = userPool.getCurrentUser();
-    
-    fetch( config.dynamodb.URL + this.props.video_id + '/vote', {
-      headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        method: "POST",
-        body: JSON.stringify({vote: vote, user_id: cognitoUser.username })
-      }).then(function(response) {
-        return response.json();
-      }).catch(function(ex) {
-        console.log('FAIL FAIL FAIL', ex)
-      })
-      this.toggle(vote);
-  }
-  
   toggle(vote) {
-    if(vote == 'yes') {
+    if(vote === 'yes') {
       this.setState({yes_disabled: true});
       this.setState({no_disabled: false});
     } else {
       this.setState({yes_disabled: false});
       this.setState({no_disabled: true});
     }
+  }
+
+  get_username() {
+    const userPool = new CognitoUserPool({
+      UserPoolId: config.cognito.USER_POOL_ID,
+      ClientId: config.cognito.APP_CLIENT_ID
+    });
+    return userPool.getCurrentUser()['username'];
+  }
+
+  async componentDidMount() {
+    fetch( config.dynamodb.URL + this.props.video_id + '/vote?userId=' + this.get_username() )
+    .then(function(response) {
+      return response.json()
+    }).then(function(json) {
+      const vote = json['Item']['vote']['S']
+      this.toggle(vote);
+    }.bind(this)).catch(function(ex) {
+      console.log('parsing failed', ex)
+    })
+  }
+
+  handleVote = (vote) => {
+    fetch( config.dynamodb.URL + this.props.video_id + '/vote', {
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      method: "POST",
+      body: JSON.stringify({vote: vote, user_id: this.get_username() })
+    }).then(function(response) {
+      return response.json();
+    }).catch(function(ex) {
+      console.log('FAIL FAIL FAIL', ex)
+    })
+    this.toggle(vote);
   }
 
   render() {

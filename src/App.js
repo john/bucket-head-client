@@ -9,10 +9,8 @@ import {
   NavItem,
   Navbar
 } from 'react-bootstrap';
-
 import { CognitoUserPool, } from 'amazon-cognito-identity-js';
 import config from './config.js';
-
 import './App.css';
 
 
@@ -94,8 +92,6 @@ class App extends Component {
       updateUserToken: this.updateUserToken,
     };
 
-    // console.log('userToken in App: ' + childProps.userToken );
-
     return ! this.state.isLoadingUserToken && (
       <div className="App container">
         <Navbar fluid collapseOnSelect>
@@ -112,7 +108,6 @@ class App extends Component {
         ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
         : [ <RouteNavItem key={1} onClick={this.handleNavLink} href="/signup">Signup</RouteNavItem>,
             <RouteNavItem key={2} onClick={this.handleNavLink} href="/login">Login</RouteNavItem> ] }
-
 
             </Nav>
           </Navbar.Collapse>

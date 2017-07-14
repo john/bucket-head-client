@@ -19,9 +19,6 @@ class Video extends Component {
   // Seeing that I should be using redux to share state, to prevent having
   // to refetch this, but whatever, for now.
   componentDidMount() {
-
-    // console.log('usertoken: ' + this.props.userToken );
-
     const { videoId } = this.props.match.params;
     this.setState({videoId: videoId});
 
@@ -41,8 +38,9 @@ class Video extends Component {
   }
 
   render() {
-
-    // console.log('userToken in Vido: ' + this.props.userToken );
+    if (!this.state.video_thumbnail) {
+        return <div />
+    }
 
     return (
       <div className="videos">
@@ -52,11 +50,10 @@ class Video extends Component {
     		  </Link>
     		</div>
           <div>
-              <a href={this.state.video_url}>
-    		    <img src={"https://s3-us-west-2.amazonaws.com/bhead-transcoded/" + this.state.video_thumbnail + '.png'} alt={this.state.video_url} />
-              </a>
-            </div>
-
+            <a href={this.state.video_url}>
+    		      <img src={"https://s3-us-west-2.amazonaws.com/bhead-transcoded/" + this.state.video_thumbnail + '.png'} alt={this.state.video_url} />
+            </a>
+          </div>
     		<div>
     		  <Vote video_id={this.state.video_id} />
     		</div>

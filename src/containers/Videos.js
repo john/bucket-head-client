@@ -13,13 +13,13 @@ class Videos extends Component {
 
   componentDidMount() {
     fetch( config.dynamodb.URL )
-      .then(function(response) {
-        return response.json()
-      }).then(function(json) {
-        this.setState({videos: json['Items']});
-      }.bind(this)).catch(function(ex) {
-        console.log('parsing failed', ex)
-      })
+    .then(function(response) {
+      return response.json()
+    }).then(function(json) {
+      this.setState({videos: json['Items']});
+    }.bind(this)).catch(function(ex) {
+      console.log('parsing failed', ex)
+    })
   }
 
   render() {
