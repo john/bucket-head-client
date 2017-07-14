@@ -19,6 +19,14 @@ input[type=file] {
   width: 100%;
 }
 
+.back {
+  margin-bottom: 20px;
+}
+
+.voteButtonWrapper {
+  margin-top: 20px;
+}
+
 .spinning.glyphicon {
   margin-right: 7px;
   top: 2px;

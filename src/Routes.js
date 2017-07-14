@@ -16,10 +16,10 @@ export default ({ childProps }) => (
     <AppliedRoute path="/" exact component={Home} props={childProps} />
     <AppliedRoute path="/login" exact component={Login} props={childProps} />
     <AppliedRoute path="/signup" exact component={Signup} props={childProps} />
-  
+
     <Route exact path="/videos" component={Videos} />
-    <Route path="/video/:videoId" component={Video} />}/>
-  
+    <Route path="/video/:videoId" component={Video} props={childProps} />}/>
+
     <Route component={NotFound} />
   </Switch>
 );

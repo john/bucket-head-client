@@ -17,7 +17,7 @@ import './App.css';
 
 
 class App extends Component {
-  
+
   constructor(props) {
     super(props);
 
@@ -26,7 +26,7 @@ class App extends Component {
       isLoadingUserToken: true,
     };
   }
-  
+
   async componentDidMount() {
     const currentUser = this.getCurrentUser();
 
@@ -45,13 +45,15 @@ class App extends Component {
 
     this.setState({isLoadingUserToken: false});
   }
-  
+
   getCurrentUser() {
     const userPool = new CognitoUserPool({
       UserPoolId: config.cognito.USER_POOL_ID,
       ClientId: config.cognito.APP_CLIENT_ID
     });
-    return userPool.getCurrentUser();
+    const user = userPool.getCurrentUser();
+    console.log('-----------> user: ' + user[0])
+    return user;
   }
 
   getUserToken(currentUser) {
@@ -65,7 +67,7 @@ class App extends Component {
       });
     });
   }
-  
+
   updateUserToken = (userToken) => {
     this.setState({
       userToken: userToken
@@ -76,7 +78,7 @@ class App extends Component {
     event.preventDefault();
     this.props.history.push(event.currentTarget.getAttribute('href'));
   }
-  
+
   handleLogout = (event) => {
     const currentUser = this.getCurrentUser();
     if (currentUser !== null) {
@@ -87,12 +89,14 @@ class App extends Component {
   }
 
   render() {
-    
+
     const childProps = {
       userToken: this.state.userToken,
       updateUserToken: this.updateUserToken,
     };
-    
+
+    console.log('userToken in App: ' + childProps.userToken );
+
     return ! this.state.isLoadingUserToken && (
       <div className="App container">
         <Navbar fluid collapseOnSelect>
@@ -104,13 +108,13 @@ class App extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-      
+
       { this.state.userToken
         ? <NavItem onClick={this.handleLogout}>Logout</NavItem>
         : [ <RouteNavItem key={1} onClick={this.handleNavLink} href="/signup">Signup</RouteNavItem>,
             <RouteNavItem key={2} onClick={this.handleNavLink} href="/login">Login</RouteNavItem> ] }
-            
-            
+
+
             </Nav>
           </Navbar.Collapse>
         </Navbar>

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import config from '../config.js';
 
 class Videos extends Component {
-  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -11,8 +12,7 @@ class Videos extends Component {
   }
 
   componentDidMount() {
-    const url = 'https://1sbgbl3pof.execute-api.us-west-2.amazonaws.com/test/';
-    fetch(url)
+    fetch( config.dynamodb.URL )
       .then(function(response) {
         return response.json()
       }).then(function(json) {
@@ -21,12 +21,12 @@ class Videos extends Component {
         console.log('parsing failed', ex)
       })
   }
-  
+
   render() {
     return (
-      <ul className="videos">
+      <ol className="videos">
         {this.state.videos.map(video =>
-          <li key={video['videoId']['S']} className="video list-unstyled">
+          <li key={video['videoId']['S']} className="video">
             <div>
               <Link to={`/video/${video['videoId']['S']}`}>
                 {video['480p_transcoded']['S']}
@@ -34,7 +34,7 @@ class Videos extends Component {
             </div>
           </li>
         )}
-      </ul>
+      </ol>
     );
   }
 }

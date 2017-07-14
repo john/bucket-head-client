@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import {
-  Button,
   FormGroup,
   FormControl,
   ControlLabel,
@@ -41,7 +40,7 @@ class Login extends Component {
       Username: username,
       Password: password
     };
-    
+
     const user = new CognitoUser({ Username: username, Pool: userPool });
     const authenticationDetails = new AuthenticationDetails(authenticationData);
 
@@ -51,6 +50,7 @@ class Login extends Component {
         onFailure: (err) => reject(err),
       })
     ));
+
   }
 
   handleChange = (event) => {
@@ -61,7 +61,7 @@ class Login extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    
+
     this.setState({ isLoading: true });
 
     try {
@@ -94,7 +94,7 @@ class Login extends Component {
               onChange={this.handleChange}
               type="password" />
           </FormGroup>
-            
+
           <LoaderButton
             block
             bsSize="large"
@@ -103,7 +103,7 @@ class Login extends Component {
             isLoading={this.state.isLoading}
             text="Login"
             loadingText="Logging in…" />
-            
+
         </form>
       </div>
     );
