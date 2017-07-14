@@ -42,6 +42,21 @@ class Login extends Component {
     };
 
     const user = new CognitoUser({ Username: username, Pool: userPool });
+    
+    // console.log('before');
+    // user.getUserAttributes(function(err, result) {
+    //     if (err) {
+    //         alert(err);
+    //         return;
+    //     }
+    //     console.log('result.length: ' + result.length);
+    //     // for (i = 0; i < result.length; i++) {
+    //     //     console.log('attribute ' + result[i].getName() + ' has value ' + result[i].getValue());
+    //     // }
+    // });
+    // console.log('after');
+    
+    
     const authenticationDetails = new AuthenticationDetails(authenticationData);
 
     return new Promise((resolve, reject) => (

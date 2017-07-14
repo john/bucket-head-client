@@ -20,7 +20,7 @@ class Video extends Component {
   // to refetch this, but whatever, for now.
   componentDidMount() {
 
-    console.log('usertoken: ' + this.props.userToken );
+    // console.log('usertoken: ' + this.props.userToken );
 
     const { videoId } = this.props.match.params;
     this.setState({videoId: videoId});
@@ -42,7 +42,7 @@ class Video extends Component {
 
   render() {
 
-    console.log('userToken in Vido: ' + this.props.userToken );
+    // console.log('userToken in Vido: ' + this.props.userToken );
 
     return (
       <div className="videos">

@@ -52,7 +52,6 @@ class App extends Component {
       ClientId: config.cognito.APP_CLIENT_ID
     });
     const user = userPool.getCurrentUser();
-    console.log('-----------> user: ' + user[0])
     return user;
   }
 
@@ -95,7 +94,7 @@ class App extends Component {
       updateUserToken: this.updateUserToken,
     };
 
-    console.log('userToken in App: ' + childProps.userToken );
+    // console.log('userToken in App: ' + childProps.userToken );
 
     return ! this.state.isLoadingUserToken && (
       <div className="App container">
