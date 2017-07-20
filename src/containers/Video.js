@@ -27,7 +27,7 @@ class Video extends Component {
         return response.json()
       }).then(function(json) {
         const videos = json['Items']
-        this.setState({video_id: videos[0]['videoId']['S']});
+        this.setState({video_id: videos[0]['VideoId']['S']});
         this.setState({video_path: videos[0]['480p_transcoded']['S']});
         this.setState({video_duration: videos[0]['duration']['S']});
 		    this.setState({video_thumbnail: videos[0]['thumbnail']['S']});

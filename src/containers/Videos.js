@@ -26,10 +26,10 @@ class Videos extends Component {
     return (
       <ol className="videos">
         {this.state.videos.map(video =>
-          <li key={video['videoId']['S']} className="video">
+          <li key={video['VideoId']['S']} className="video">
             <div>
-              <Link to={`/video/${video['videoId']['S']}`}>
-                {video['480p_transcoded']['S']}
+              <Link to={`/video/${video['VideoId']['S']}`}>
+                {video['VideoId']['S']}
               </Link>
             </div>
           </li>
