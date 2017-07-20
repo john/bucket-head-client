@@ -29,7 +29,7 @@ class Videos extends Component {
           <li key={video['VideoId']['S']} className="video">
             <div>
               <Link to={`/video/${video['VideoId']['S']}`}>
-                {video['VideoId']['S']}
+                {video['original_input']['S']}
               </Link>
             </div>
           </li>

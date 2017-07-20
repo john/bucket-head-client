@@ -5,5 +5,8 @@ export default {
   },
   dynamodb: {
     URL: 'https://1sbgbl3pof.execute-api.us-west-2.amazonaws.com/test/',
+  },
+  s3: {
+    transcoded_url: 'https://s3-us-west-2.amazonaws.com/buckethead-transcodedfiles-1cbx6xebtb1r0/'
   }
 };
