@@ -51,7 +51,7 @@ class Video extends Component {
     		</div>
           <div>
             <a href={this.state.video_url}>
-    		      <img src={config.s3.URL + this.state.video_thumbnail} alt={this.state.video_url} />
+    		     <img src={config.s3.URL + this.state.video_thumbnail} alt={this.state.video_url} />
             </a>
           </div>
     		<div>

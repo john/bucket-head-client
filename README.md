@@ -3,6 +3,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
+## To run camera script:
+- Make sure camera is enabled
+- Install Python AWS SDK: `sudo pip install boto3`
+- Install PiCamera: `sudo apt-get install python-picamera`
+- Install gpac: `sudo apt-get install gpac`)
+- Install AWS CLI: `pip install --upgrade --user awscli`
+- Set Amazon credentials: `aws configure`
+
 ## Update with deploy & run instructions
 
 - locally, from repo dir: `yarn start`
