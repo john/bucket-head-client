@@ -18,23 +18,21 @@ class Videos extends Component {
     }).then(function(json) {
       this.setState({videos: json['Items']});
     }.bind(this)).catch(function(ex) {
-      console.log('parsing failed', ex)
+      console.log('parsing failed', ex);
     })
   }
 
   render() {
     return (
-      <ol className="videos">
+      <div className="videos row">
         {this.state.videos.map(video =>
-          <li key={video['VideoId']['S']} className="video">
-            <div>
-              <Link to={`/video/${video['VideoId']['S']}`}>
-                {video['VideoId']['S']}
-              </Link>
-            </div>
-          </li>
+          <div key={video['VideoId']['S']} className="video col-sm-3">
+            <Link to={`/video/${video['VideoId']['S']}`}>
+              <img src={config.s3.URL + video['thumbnail']['S']} alt={video['thumbnail']['S']} />
+            </Link>
+          </div>
         )}
-      </ol>
+      </div>
     );
   }
 }

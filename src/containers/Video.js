@@ -31,7 +31,7 @@ class Video extends Component {
         this.setState({video_path: videos[0]['480p_transcoded']['S']});
         this.setState({video_duration: videos[0]['duration']['S']});
 		    this.setState({video_thumbnail: videos[0]['thumbnail']['S']});
-        this.setState({video_url: "https://s3-us-west-2.amazonaws.com/bhead-transcoded/" + videos[0]['480p_transcoded']['S']});
+        this.setState({video_url: config.s3.URL + videos[0]['480p_transcoded']['S']});
       }.bind(this)).catch(function(ex) {
         console.log('parsing failed', ex)
       })
@@ -51,7 +51,7 @@ class Video extends Component {
     		</div>
           <div>
             <a href={this.state.video_url}>
-    		      <img src={"https://s3-us-west-2.amazonaws.com/bhead-transcoded/" + this.state.video_thumbnail + '.png'} alt={this.state.video_url} />
+    		      <img src={config.s3.URL + this.state.video_thumbnail} alt={this.state.video_url} />
             </a>
           </div>
     		<div>
