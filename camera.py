@@ -29,7 +29,7 @@ try:
   curses.noecho()
   curses.cbreak()
   # camera.resolution = (640, 480)
-  camera.rotation = 270
+  camera.rotation = 180 
   stream = picamera.PiCameraCircularIO(camera, seconds=5)
   camera.start_recording(stream, format='h264')
 
