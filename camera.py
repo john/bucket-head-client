@@ -30,13 +30,13 @@ try:
   curses.cbreak()
   # camera.resolution = (640, 480)
   camera.rotation = 180 
-  stream = picamera.PiCameraCircularIO(camera, seconds=5)
+  stream = picamera.PiCameraCircularIO(camera, seconds=10)
   camera.start_recording(stream, format='h264')
 
   # Raw input works for ascii, but curses ('getch') lets you capture mouse input as well
   # inp = raw_input('press any key to record')
   event = stdscr.getch()
-  camera.wait_recording(5)
+  camera.wait_recording(10)
   write_video(stream, filename)
 
   subprocess.call(["MP4Box", "-fps", "30", "-add", "{0}.h264".format(filename), converted_filename])
