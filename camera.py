@@ -34,7 +34,7 @@ try:
   camera.start_recording(stream, format='h264')
 
   # Raw input works for ascii, but curses ('getch') lets you capture mouse input as well
-  #inp = raw_input('press any key to record')
+  # inp = raw_input('press any key to record')
   event = stdscr.getch()
   camera.wait_recording(5)
   write_video(stream, filename)
@@ -44,7 +44,7 @@ try:
 # Send it to S3
   s3 = boto3.resource('s3')
   data = open(converted_filename, 'rb')
-  s3.Bucket('bhead-upload').put_object(Key=converted_filename, Body=data)
+  s3.Bucket('buckethead-uploadedfiles-dt361823pw2n').put_object(Key=converted_filename, Body=data)
 
 finally:
   camera.stop_recording()
